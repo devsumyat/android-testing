@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:startDestination="@id/tasks"
+            android:id="@+id/nav_graph">
+
+    <fragment
+            android:id="@+id/tasks"
+            android:name="com.example.androidtesting.tasks.TasksFragment"
+            android:label="Task Detail"/>
+
+    <fragment
+            android:id="@+id/addTask"
+            android:name="com.example.androidtesting.add_task.AddTaskFragment"
+            android:label="Add Task"/>
+
+</navigation>
