@@ -3,5 +3,5 @@
     <string name="title_hint">Title</string>
     <string name="description_hint">Enter your note here.</string>
     <string name="empty_task_message">Notes cannot be empty</string>
-    <string name="no_data">No data</string>
+    <string name="no_data">Empty Notes</string>
 </resources>

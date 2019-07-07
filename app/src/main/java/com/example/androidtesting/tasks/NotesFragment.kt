@@ -34,7 +34,8 @@ class NotesFragment : Fragment() {
 
 
         viewModel.items.observe(this, Observer {
-            listAdapter.replaceData(it)
+            no_notes.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+                listAdapter.replaceData(it)
         })
     }
 
