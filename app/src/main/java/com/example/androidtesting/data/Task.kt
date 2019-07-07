@@ -13,10 +13,10 @@ data class Task @JvmOverloads constructor(
     @PrimaryKey @ColumnInfo(name = "entryid") var id: String = UUID.randomUUID().toString()
 ) {
     val titleForList: String
-        get() = if (title.isNotEmpty()) title else description
+        get() = if (title.isNotEmpty()) title else "demo title"
 
-    val isActive
-        get() = !isCompleted
+    val descriptionForList: String
+    get() = if(description.isNotEmpty()) description else "demo description"
 
     val isEmpty
         get() = title.isEmpty() || description.isEmpty()
