@@ -1,10 +1,8 @@
 package com.example.androidtesting.add_task_test
 
-import android.content.Context
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
@@ -13,9 +11,9 @@ import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.androidtesting.R
 import com.example.androidtesting.ServiceLocator
-import com.example.androidtesting.add_task.AddTaskFragment
+import com.example.androidtesting.add_note.AddNoteFragment
 import com.example.androidtesting.data.FakeRepository
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.remote.NotesRepository
 import com.example.androidtesting.util.getTasksBlocking
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -34,14 +32,14 @@ import org.robolectric.annotation.TextLayoutMode
 @MediumTest
 @LooperMode(LooperMode.Mode.PAUSED)
 @TextLayoutMode(TextLayoutMode.Mode.REALISTIC)
-class AddTaskFragmentShareTest{
+class AddNoteFragmentShareTest{
 
-    private lateinit var repository: TaskRepository
+    private lateinit var repository: NotesRepository
 
     @Before
     fun initRepository(){
         repository = FakeRepository()
-        ServiceLocator.tasksRepository = repository
+        ServiceLocator.notesRepository = repository
     }
 
     @After
@@ -51,7 +49,7 @@ class AddTaskFragmentShareTest{
 
     @Test
     fun validTask_isSaved() {
-        // GIVEN - On the "Add Task" screen.
+        // GIVEN - On the "Add Note" screen.
         val navController = Mockito.mock(NavController::class.java)
         launchFragment(navController)
 
@@ -68,7 +66,7 @@ class AddTaskFragmentShareTest{
     }
 
     private fun launchFragment(navController: NavController?) {
-        val scenario = launchFragmentInContainer<AddTaskFragment>(null, R.style.AppTheme)
+        val scenario = launchFragmentInContainer<AddNoteFragment>(null, R.style.AppTheme)
         scenario.onFragment {
             Navigation.setViewNavController(it.view!!, navController)
         }

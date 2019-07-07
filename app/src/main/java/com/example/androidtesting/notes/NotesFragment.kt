@@ -1,4 +1,4 @@
-package com.example.androidtesting.tasks
+package com.example.androidtesting.notes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,7 +29,7 @@ class NotesFragment : Fragment() {
         setupListAdapter()
 
         fab_add_task.setOnClickListener {
-            findNavController().navigate(R.id.addTask)
+            findNavController().navigate(R.id.addNote)
         }
 
 

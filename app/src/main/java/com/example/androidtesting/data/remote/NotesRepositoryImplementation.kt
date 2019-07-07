@@ -2,16 +2,16 @@ package com.example.androidtesting.data.remote
 
 import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
-import com.example.androidtesting.data.Task
+import com.example.androidtesting.data.Note
 import kotlinx.coroutines.*
 import java.lang.Exception
 
-class DefaultTaskRepository(
-    private val tasksLocalDataSource: TaskDataSource,
+class NotesRepositoryImplementation(
+    private val tasksLocalDataSource: NotesDataSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : TaskRepository {
+) : NotesRepository {
 
-    override suspend fun getTasks(): Result<List<Task>> {
+    override suspend fun getNotes(): Result<List<Note>> {
         EspressoIdlingResource.increment()
 
         return withContext(ioDispatcher) {
@@ -24,10 +24,10 @@ class DefaultTaskRepository(
         }
     }
 
-    override suspend fun saveTask(task: Task) {
+    override suspend fun saveNote(note: Note) {
         coroutineScope {
             launch {
-                tasksLocalDataSource.saveTask(task)
+                tasksLocalDataSource.saveTask(note)
             }
         }
     }

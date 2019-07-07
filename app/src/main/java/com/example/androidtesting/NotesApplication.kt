@@ -1,13 +1,13 @@
 package com.example.androidtesting
 
 import android.app.Application
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.remote.NotesRepository
 import com.facebook.stetho.Stetho
 import timber.log.Timber
 
 class NotesApplication : Application(){
 
-    val taskRepository: TaskRepository
+    val notesRepository: NotesRepository
     get() = ServiceLocator.provideTasksRepository(this)
 
     override fun onCreate() {

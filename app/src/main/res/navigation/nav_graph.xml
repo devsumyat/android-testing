@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:startDestination="@id/tasks"
+            app:startDestination="@id/notes"
             android:id="@+id/nav_graph">
 
     <fragment
-            android:id="@+id/tasks"
-            android:name="com.example.androidtesting.tasks.NotesFragment"
-            android:label="Task Detail"/>
+            android:id="@+id/notes"
+            android:name="com.example.androidtesting.notes.NotesFragment"
+            android:label="Note Detail"/>
 
     <fragment
-            android:id="@+id/addTask"
-            android:name="com.example.androidtesting.add_task.AddTaskFragment"
-            android:label="Add Task"/>
+            android:id="@+id/addNote"
+            android:name="com.example.androidtesting.add_note.AddNoteFragment"
+            android:label="Add Note"/>
 
 </navigation>

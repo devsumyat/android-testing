@@ -15,14 +15,14 @@
  */
 package com.example.androidtesting.util
 
-import com.example.androidtesting.data.Task
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.Note
+import com.example.androidtesting.data.remote.NotesRepository
 import kotlinx.coroutines.runBlocking
 
 /**
- * A blocking version of TasksRepository.saveTask to minimize the number of times we have to
+ * A blocking version of TasksRepository.saveNote to minimize the number of times we have to
  * explicitly add <code>runBlocking { ... }</code> in our tests
  */
-fun TaskRepository.saveTaskBlocking2(task: Task) = runBlocking {
-    this@saveTaskBlocking2.saveTask(task)
+fun NotesRepository.saveTaskBlocking2(note: Note) = runBlocking {
+    this@saveTaskBlocking2.saveNote(note)
 }

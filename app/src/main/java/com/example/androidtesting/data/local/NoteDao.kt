@@ -4,14 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.androidtesting.data.Task
+import com.example.androidtesting.data.Note
 
 @Dao
-interface TaskDao {
+interface NoteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTask(task: Task)
+    suspend fun insertTask(note: Note)
 
-    @Query("SELECT * FROM Tasks")
-    suspend fun getTasks(): List<Task>
+    @Query("SELECT * FROM NOTES")
+    suspend fun getTasks(): List<Note>
 }

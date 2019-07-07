@@ -9,8 +9,8 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
-import com.example.androidtesting.data.Task
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.Note
+import com.example.androidtesting.data.remote.NotesRepository
 import com.example.androidtesting.util.DataBindingIdlingResource
 import com.example.androidtesting.util.monitorActivity
 import com.example.androidtesting.util.saveTaskBlocking2
@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 @LargeTest
 class NotesActivityTest {
 
-    private lateinit var repository: TaskRepository
+    private lateinit var repository: NotesRepository
 
     private val dataBindingIdlingResource = DataBindingIdlingResource()
 
@@ -49,7 +49,7 @@ class NotesActivityTest {
 
     @Test
     fun saveTask(){
-        repository.saveTaskBlocking2(Task("TITLE1", "DESCRIPTION"))
+        repository.saveTaskBlocking2(Note("TITLE1", "DESCRIPTION"))
 
         // start up Tasks screen
         val activityScenario = ActivityScenario.launch(NotesActivity::class.java)

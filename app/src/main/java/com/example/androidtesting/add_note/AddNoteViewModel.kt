@@ -1,4 +1,4 @@
-package com.example.androidtesting.add_task
+package com.example.androidtesting.add_note
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidtesting.Event
 import com.example.androidtesting.R
-import com.example.androidtesting.data.Task
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.Note
+import com.example.androidtesting.data.remote.NotesRepository
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
-class AddTaskViewModel(private val repo: TaskRepository) : ViewModel() {
+class AddNoteViewModel(private val repo: NotesRepository) : ViewModel() {
 
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
@@ -34,16 +33,16 @@ class AddTaskViewModel(private val repo: TaskRepository) : ViewModel() {
             _snackbarText.value = Event(R.string.empty_task_message)
             return
         }
-        if (Task(currentTitle, currentDescription).isEmpty) {
+        if (Note(currentTitle, currentDescription).isEmpty) {
             _snackbarText.value = Event(R.string.empty_task_message)
             return
         }
 
-        createTask(Task(currentTitle, currentDescription))
+        createTask(Note(currentTitle, currentDescription))
     }
 
-    private fun createTask(newTask: Task) = viewModelScope.launch {
-        repo.saveTask(newTask)
+    private fun createTask(newNote: Note) = viewModelScope.launch {
+        repo.saveNote(newNote)
         _taskUpdated.value = Event(Unit)
     }
 

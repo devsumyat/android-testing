@@ -3,32 +3,32 @@ package com.example.androidtesting
 import android.content.Context
 import androidx.annotation.VisibleForTesting
 import androidx.room.Room
-import com.example.androidtesting.data.local.TaskDatabase
-import com.example.androidtesting.data.local.TaskLocalDataSource
-import com.example.androidtesting.data.remote.DefaultTaskRepository
-import com.example.androidtesting.data.remote.TaskRepository
+import com.example.androidtesting.data.local.NotesDatabase
+import com.example.androidtesting.data.local.LocalDataSource
+import com.example.androidtesting.data.remote.NotesRepositoryImplementation
+import com.example.androidtesting.data.remote.NotesRepository
 
 object ServiceLocator {
 
     private val lock = Any()
-    private var database: TaskDatabase? = null
-    @Volatile var tasksRepository: TaskRepository? = null
+    private var database: NotesDatabase? = null
+    @Volatile var notesRepository: NotesRepository? = null
         @VisibleForTesting set
 
-    fun provideTasksRepository(context: Context): TaskRepository{
+    fun provideTasksRepository(context: Context): NotesRepository{
         synchronized(this){
-            return tasksRepository ?:
-            tasksRepository ?: createTasksRepository(context)
+            return notesRepository ?:
+            notesRepository ?: createTasksRepository(context)
         }
     }
 
-    private fun createTasksRepository(context: Context): TaskRepository {
+    private fun createTasksRepository(context: Context): NotesRepository {
         database = Room.databaseBuilder(context.applicationContext,
-            TaskDatabase::class.java, "Tasks.db")
+            NotesDatabase::class.java, "Notes.db")
             .build()
 
-        return DefaultTaskRepository(
-            TaskLocalDataSource(database!!.taskDao())
+        return NotesRepositoryImplementation(
+            LocalDataSource(database!!.taskDao())
         )
     }
 
@@ -40,7 +40,7 @@ object ServiceLocator {
                 clearAllTables()
                 close()
             }
-            tasksRepository = null
+            notesRepository = null
         }
     }
 }

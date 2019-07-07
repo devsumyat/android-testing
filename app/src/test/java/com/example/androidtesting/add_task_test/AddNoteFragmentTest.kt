@@ -2,9 +2,9 @@ package com.example.androidtesting.add_task_test
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.android.architecture.blueprints.todoapp.ViewModelScopeMainDispatcherRule
-import com.example.androidtesting.add_task.AddTaskViewModel
+import com.example.androidtesting.add_note.AddNoteViewModel
 import com.example.androidtesting.data.FakeRepository
-import com.example.androidtesting.data.Task
+import com.example.androidtesting.data.Note
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineContext
@@ -14,9 +14,9 @@ import org.junit.Rule
 import org.junit.Test
 
 @ObsoleteCoroutinesApi
-class AddTaskFragmentTest {
+class AddNoteFragmentTest {
 
-    private lateinit var viewmodel: AddTaskViewModel
+    private lateinit var viewmodel: AddNoteViewModel
 
     private lateinit var repo: FakeRepository
 
@@ -31,7 +31,7 @@ class AddTaskFragmentTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val task = Task("Title1", "Description1")
+    private val task = Note("Title1", "Description1")
 
     @Before
     fun setupViewModel() {
@@ -39,14 +39,14 @@ class AddTaskFragmentTest {
         repo = FakeRepository()
 
         // Create class under test
-        viewmodel = AddTaskViewModel(repo)
+        viewmodel = AddNoteViewModel(repo)
     }
 
     @ObsoleteCoroutinesApi
     @Test
     fun saveTask(){
-        val newTitle = "New Task Title"
-        val newDescription = "Some Task Description"
+        val newTitle = "New Note Title"
+        val newDescription = "Some Note Description"
         viewmodel.saveTask(newTitle, newDescription)
 
         // Execute pending coroutines actions
