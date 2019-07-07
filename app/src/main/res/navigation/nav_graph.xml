@@ -6,7 +6,7 @@
 
     <fragment
             android:id="@+id/tasks"
-            android:name="com.example.androidtesting.tasks.TasksFragment"
+            android:name="com.example.androidtesting.tasks.NotesFragment"
             android:label="Task Detail"/>
 
     <fragment

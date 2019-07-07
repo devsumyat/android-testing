@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class MainActivityTest {
+class NotesActivityTest {
 
     private lateinit var repository: TaskRepository
 
@@ -52,7 +52,7 @@ class MainActivityTest {
         repository.saveTaskBlocking2(Task("TITLE1", "DESCRIPTION"))
 
         // start up Tasks screen
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        val activityScenario = ActivityScenario.launch(NotesActivity::class.java)
         dataBindingIdlingResource.monitorActivity(activityScenario)
 
         // Verify task is displayed on screen in the task list.

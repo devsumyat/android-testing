@@ -10,7 +10,7 @@ import com.example.androidtesting.data.Task
 import com.example.androidtesting.databinding.TaskItemBinding
 import timber.log.Timber
 
-class TasksAdapter(
+class NotesAdapter(
     private var tasks: List<Task>,
     private var viewModel: TasksViewModel
 ) : BaseAdapter() {
